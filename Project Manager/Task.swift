@@ -54,6 +54,7 @@ struct TaskView: View {
 
 
 class TrashDropDelegate: DropDelegate {
+    
     let removeTask: (String) -> Void
     
     init(removeTask: @escaping (String) -> Void) {

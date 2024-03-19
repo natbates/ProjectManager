@@ -176,7 +176,6 @@ struct ContentView: View {
             .navigationBarTitle("Projects", displayMode: .inline)
             .background(Color.white)
             .onAppear {
-                projectManager.projects = []
                 projectManager.loadProjects()
             }
         }

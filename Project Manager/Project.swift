@@ -86,8 +86,7 @@ class ProjectViewModel: ObservableObject {
     }
     
     func addNewTask(_ task: String, _ taskType: TaskType) {
-        
-        
+            
         // Function to generate a unique task name
         func uniqueTaskName(for task: String, in tasks: [String]) -> String {
             var updatedTask = task
@@ -169,6 +168,7 @@ class ProjectViewModel: ObservableObject {
             return true // Indicate success of drop operation
         }
     }
+
 }
 
 struct ProjectView: View {
@@ -190,9 +190,7 @@ struct ProjectView: View {
             .inProgress: project.wrappedValue.inProgressTasks,
             .done: project.wrappedValue.doneTasks
         ]
-        
         self.viewModel = ProjectViewModel(tasks: tasksDict, status: project.wrappedValue.status)
-        
         self.onSave = onSave
     }
     
@@ -239,24 +237,31 @@ struct ProjectView: View {
             TaskView(title: "To Do", tasks: viewModel.toDoTasks, isTargeted: viewModel.isToDoTargeted)
                 .frame(maxWidth: .infinity)
                 .dropDestination(for: String.self) { droppedTasks, location in
-                    viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .todo)
+                    let result = viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .todo)
+                    self.saveState() // Save state after handling drop
+                    return result
                 } isTargeted: { isTargeted in
                     viewModel.isToDoTargeted = isTargeted
                 }
-            
+
             TaskView(title: "In Progress", tasks: viewModel.inProgressTasks, isTargeted: viewModel.isInProgressTargeted)
                 .dropDestination(for: String.self) { droppedTasks, location in
-                    viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .inProgress)
+                    let result = viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .inProgress)
+                    self.saveState() // Save state after handling drop
+                    return result
                 } isTargeted: { isTargeted in
                     viewModel.isInProgressTargeted = isTargeted
                 }
-            
+
             TaskView(title: "Done", tasks: viewModel.doneTasks, isTargeted: viewModel.isDoneTargeted)
                 .dropDestination(for: String.self) { droppedTasks, location in
-                    viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .done)
+                    let result = viewModel.handleDrop(tasks: droppedTasks, location: location, taskType: .done)
+                    self.saveState() // Save state after handling drop
+                    return result
                 } isTargeted: { isTargeted in
                     viewModel.isDoneTargeted = isTargeted
                 }
+
             HStack{
                 Spacer()
                 Text(daysLeftText)
@@ -265,14 +270,6 @@ struct ProjectView: View {
         }
         .padding(.vertical, 4)
         .padding(.horizontal, 15)
-        .onAppear {
-            loadState()
-            
-        }
-        .onDisappear {
-            saveState()
-            
-        }
         .alert(isPresented: $showingConfirmation) {
             Alert(
                 title: Text("Are you sure you want to delete this project?"),
@@ -283,6 +280,14 @@ struct ProjectView: View {
                 },
                 secondaryButton: .cancel()
             )
+        }
+        .onAppear {
+            print(viewModel.toDoTasks, viewModel.inProgressTasks, viewModel.doneTasks) // WHY ARE THESE EMPTY???
+            loadState()
+            
+        }
+        .onDisappear {
+            print("dick head")
         }
     }
     
@@ -311,6 +316,8 @@ struct ProjectView: View {
     }
     
     func saveState() {
+        
+        print("X")
                 
         UserDefaults.standard.set(try? JSONEncoder().encode(viewModel.toDoTasks), forKey: "toDoTasks_\(project.id)")
         UserDefaults.standard.set(try? JSONEncoder().encode(viewModel.inProgressTasks), forKey: "inProgressTasks_\(project.id)")
@@ -364,6 +371,7 @@ struct ProjectView: View {
             if let textField = alertController.textFields?.first, let text = textField.text {
                 taskName = text
                 viewModel.addNewTask(taskName, taskType)
+                saveState()
             }
         }
         
