@@ -15,3 +15,7 @@ struct Project_ManagerApp: App {
         }
     }
 }
+
+#Preview(body: {
+    ContentView()
+})

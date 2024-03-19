@@ -11,6 +11,9 @@
 		3C433B472BA119C400A664A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C433B462BA119C400A664A9 /* ContentView.swift */; };
 		3C433B492BA119C500A664A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C433B482BA119C500A664A9 /* Assets.xcassets */; };
 		3C433B4D2BA119C500A664A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C433B4C2BA119C500A664A9 /* Preview Assets.xcassets */; };
+		3C433B592BA7133D00A664A9 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 3C433B582BA7133D00A664A9 /* Algorithms */; };
+		3CB5133A2BA84D230031A5F9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB513392BA84D230031A5F9 /* Project.swift */; };
+		3CB5133C2BA84D4E0031A5F9 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5133B2BA84D4E0031A5F9 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,8 @@
 		3C433B482BA119C500A664A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C433B4A2BA119C500A664A9 /* Project_Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Manager.entitlements; sourceTree = "<group>"; };
 		3C433B4C2BA119C500A664A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3CB513392BA84D230031A5F9 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		3CB5133B2BA84D4E0031A5F9 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C433B592BA7133D00A664A9 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				3C433B442BA119C400A664A9 /* Project_ManagerApp.swift */,
+				3CB513392BA84D230031A5F9 /* Project.swift */,
+				3CB5133B2BA84D4E0031A5F9 /* Task.swift */,
 				3C433B462BA119C400A664A9 /* ContentView.swift */,
 				3C433B482BA119C500A664A9 /* Assets.xcassets */,
 				3C433B4A2BA119C500A664A9 /* Project_Manager.entitlements */,
@@ -85,6 +93,9 @@
 			dependencies = (
 			);
 			name = "Project Manager";
+			packageProductDependencies = (
+				3C433B582BA7133D00A664A9 /* Algorithms */,
+			);
 			productName = "Project Manager";
 			productReference = 3C433B412BA119C400A664A9 /* Project Manager.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 3C433B382BA119C400A664A9;
+			packageReferences = (
+				3C433B572BA7133D00A664A9 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = 3C433B422BA119C400A664A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB5133C2BA84D4E0031A5F9 /* Task.swift in Sources */,
 				3C433B472BA119C400A664A9 /* ContentView.swift in Sources */,
 				3C433B452BA119C400A664A9 /* Project_ManagerApp.swift in Sources */,
+				3CB5133A2BA84D230031A5F9 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +298,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -320,9 +335,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
@@ -359,6 +373,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C433B572BA7133D00A664A9 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C433B582BA7133D00A664A9 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C433B572BA7133D00A664A9 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3C433B392BA119C400A664A9 /* Project object */;
 }
