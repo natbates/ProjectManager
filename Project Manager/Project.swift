@@ -282,12 +282,8 @@ struct ProjectView: View {
             )
         }
         .onAppear {
-            print(viewModel.toDoTasks, viewModel.inProgressTasks, viewModel.doneTasks) // WHY ARE THESE EMPTY???
             loadState()
             
-        }
-        .onDisappear {
-            print("dick head")
         }
     }
     
@@ -316,9 +312,7 @@ struct ProjectView: View {
     }
     
     func saveState() {
-        
-        print("X")
-                
+                        
         UserDefaults.standard.set(try? JSONEncoder().encode(viewModel.toDoTasks), forKey: "toDoTasks_\(project.id)")
         UserDefaults.standard.set(try? JSONEncoder().encode(viewModel.inProgressTasks), forKey: "inProgressTasks_\(project.id)")
         UserDefaults.standard.set(try? JSONEncoder().encode(viewModel.doneTasks), forKey: "doneTasks_\(project.id)")
